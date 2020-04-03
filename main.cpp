@@ -1,7 +1,7 @@
 #include<iostream>
 
-#define MAX_KEYS order-1
-#define MAX_NODE_POINT 2*order-1
+#define MAX_KEYS 2*order
+#define MAX_NODE_POINT 2*order+1
 
 using namespace std;
 
@@ -14,6 +14,7 @@ struct wezel{
 
 };
 
+
 class Bdrzewo{
 
 private:
@@ -24,15 +25,71 @@ public:
 
         cout<<"Podaj rzad drzewa"<<endl;
         cin>>order;
+        root=NULL;
+    }
 
-        root->n_arr=new wezel*[MAX_NODE_POINT];
-        root->k_arr=new int[MAX_KEYS];
-        root->leaf=1;
-        root->amount=0;
+    wezel *nowy_wezel() {
+
+        wezel *n_node=new wezel;
+        n_node->n_arr=new wezel*[MAX_NODE_POINT];
+        n_node->k_arr=new int[MAX_KEYS];
+        n_node->leaf=true;
+        n_node->amount=0;
+        return n_node;
 
     }
 
-    void tree_insert();
+    void podziel_wezel(){}
+
+    void insert_n_full(int key,wezel *curr){
+
+        int i=curr->amount-1;
+        if (curr->leaf==true) {
+
+            while(i>=0 && curr->k_arr[i]>key) {
+
+                curr->k_arr[i+1]=curr->k_arr[i];
+                i--;
+
+            }
+
+            curr->k_arr[i+1]=key;
+            curr->amount=curr->amount+1;
+
+        }
+        else {
+
+            while(i>=0 && curr->k_arr > key) i--;
+
+                if(curr->n_arr[i+1]->amount==MAX_KEYS) {
+
+                    podziel_wezel(i+1,curr->n_arr[i+1]);
+
+                    if(curr->k_arr[i+1]<k) i++;
+                }
+                insert_n_full(key, curr->n_arr[k+1]);
+            }
+        }
+    }
+
+    void tree_insert(){
+        //pobranie danych od uzytkownika
+        cout<<"Podaj klucz"<<endl;
+        int k;
+        cin>>k;
+        //
+
+        if(root==NULL){
+            root=nowy_wezel();
+        }
+        else {
+            if(root->amount==MAX_NODE_POINT) {
+
+            }
+
+
+        }
+    }
 
     void  tree_delete();
 
