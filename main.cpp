@@ -1,7 +1,7 @@
 #include<iostream>
 
-#define MAX_KEYS 2*order-1
-#define MAX_NODE_POINT order-1
+#define MAX_KEYS order-1
+#define MAX_NODE_POINT 2*order-1
 
 using namespace std;
 
