@@ -1,30 +1,36 @@
 #include<iostream>
+
+#define MAX_KEYS 2*order-1
+#define MAX_NODE_POINT order-1
+
 using namespace std;
-
-struct wezel;
-
-struct key{
-
-    int wartosc;
-    wezel *prawy;
-    wezel *lewy;
-
-};
 
 struct wezel{
 
-    key *arr;
+    wezel **n_arr;
+    int *k_arr;
     int amount;
+    bool leaf;
 
 };
 
 class Bdrzewo{
 
 private:
-    wezel root;
+    wezel *root;
     int order;
 public:
-    void inicjalizacja_drzewa();
+    void inicjalizacja_drzewa(){
+
+        cout<<"Podaj rzad drzewa"<<endl;
+        cin>>order;
+
+        root->n_arr=new wezel*[MAX_KEYS];
+        root->k_arr=new int[MAX_NODE_POINT];
+        root->leaf=1;
+        root->amount=0;
+
+    }
 
     void tree_insert();
 
@@ -37,7 +43,7 @@ public:
 
 int main()
 {
-    Bdrzewo tree;
-    tree.inicjalizacja();
+    Bdrzewo new_tree;
+    new_tree.inicjalizacja_drzewa();
     return 0;
 }
