@@ -25,8 +25,8 @@ public:
         cout<<"Podaj rzad drzewa"<<endl;
         cin>>order;
 
-        root->n_arr=new wezel*[MAX_KEYS];
-        root->k_arr=new int[MAX_NODE_POINT];
+        root->n_arr=new wezel*[MAX_NODE_POINT];
+        root->k_arr=new int[MAX_KEYS];
         root->leaf=1;
         root->amount=0;
 
