@@ -1,40 +1,38 @@
 #include<iostream>
 using namespace std;
 
+struct wezel;
+
+struct key{
+
+    int wartosc;
+    wezel *prawy;
+    wezel *lewy;
+
+};
+
 struct wezel{
 
-    int data;
-    wezel *next[];
+    key *arr;
+    int amount;
 
 };
 
 class Bdrzewo{
 
-    private:
-        wezel *wierzcholek=NULL;
-        int rzad=10;
+private:
+    wezel root;
+    int order;
+public:
+    void inicjalizacja_drzewa();
 
-    public:
-        void inicjalizacja(){
+    void tree_insert();
 
-            cout<<"Podaj rzad drzewa:"<<endl;
+    void  tree_delete();
 
-            while(rzad>5) cin>>rzad;
+    void tree_search();
 
-        }
-
-        void dodaj(){
-
-        }
-
-        void szukaj(){
-
-
-        }
 };
-
-
-
 
 
 int main()
